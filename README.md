@@ -9,12 +9,12 @@ Hackathon starter for Rails developer. Inspired by [hackathon-starter](https://g
 
 # Usage
 
-  $ git clone https://github.com/jamiees2/hackathon-starter-rails
-    $ cd hackathon-starter-rails
-    #To rename the app
-    $ rails g rename:app_to <name>
-    $ bundle install
-    $ rails s
+    $ git clone https://github.com/jamiees2/hackathon-starter-rails
+        $ cd hackathon-starter-rails
+        #To rename the app
+        $ rails g rename:app_to <name>
+        $ bundle install
+        $ rails s
 
 
 
