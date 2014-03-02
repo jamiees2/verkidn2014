@@ -48,6 +48,9 @@ group :development do
   #Get descriptive and useful errors
   gem "better_errors"
 
+  #To rename apps
+  gem 'rename'
+
 end
 
 # Use ActiveModel has_secure_password
