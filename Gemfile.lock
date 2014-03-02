@@ -32,6 +32,8 @@ GEM
     better_errors (1.1.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     builder (3.1.4)
     choice (0.1.6)
     coderay (1.1.0)
@@ -43,6 +45,7 @@ GEM
       execjs
     coffee-script-source (1.7.0)
     daemons (1.1.9)
+    debug_inspector (0.0.2)
     devise (3.2.2)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -82,7 +85,7 @@ GEM
       sprockets-rails (~> 2.0.0)
     rails-assets-bootstrap (3.1.1)
       rails-assets-jquery (>= 1.9.0)
-    rails-assets-font-awesome (4.0.3)
+    rails-assets-components-font-awesome (4.0.3)
     rails-assets-jquery (2.1.0)
     rails-erd (1.1.0)
       activerecord (>= 3.0)
@@ -147,13 +150,14 @@ PLATFORMS
 
 DEPENDENCIES
   better_errors
+  binding_of_caller
   coffee-rails (~> 4.0.0)
   devise
   jbuilder (~> 1.2)
   jquery-rails
   rails
   rails-assets-bootstrap
-  rails-assets-font-awesome
+  rails-assets-components-font-awesome
   rails-erd
   rename
   sass-rails (~> 4.0.0)

@@ -48,6 +48,9 @@ group :development do
   #Get descriptive and useful errors
   gem "better_errors"
 
+  #Add error REPL
+  gem "binding_of_caller"
+
   #To rename apps
   gem 'rename'
 
@@ -73,4 +76,4 @@ gem 'devise'
 
 #BEGIN RAILS ASSETS BOWER PACKAGES
 gem 'rails-assets-bootstrap'
-gem 'rails-assets-font-awesome'
+gem 'rails-assets-components-font-awesome'
