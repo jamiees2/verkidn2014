@@ -6,9 +6,10 @@ A template for Rails projects. Inspired by [hackathon-starter](https://github.co
 # Usage
 
     $ git clone https://github.com/jamiees2/hackathon-starter-rails
-    $ cd hackathon-starter-rails
+    $ cd rails-template
     #To rename the app
     $ rails g rename:app_to <name>
+    $ cd ../<name>
     $ bundle install
     $ rails s
 

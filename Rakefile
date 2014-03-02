@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-HackathonStarterRails::Application.load_tasks
+RailsTemplate::Application.load_tasks
