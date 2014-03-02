@@ -73,3 +73,4 @@ gem 'devise'
 
 #BEGIN RAILS ASSETS BOWER PACKAGES
 gem 'rails-assets-bootstrap'
+gem 'rails-assets-font-awesome'
