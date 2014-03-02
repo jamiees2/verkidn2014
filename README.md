@@ -11,7 +11,8 @@ Hackathon starter for Rails developer. Inspired by [hackathon-starter](https://g
 
     $ git clone https://github.com/jamiees2/hackathon-starter-rails
 	$ cd hackathon-starter-rails
-  $ rails g rename:app_to <name> #To rename the app
+  #To rename the app
+  $ rails g rename:app_to <name>
 	$ bundle install
 	$ rails s
 
