@@ -1,11 +1,7 @@
-Hackathon Starter Rails
+Rails Template
 =======================
 
-Hackathon starter for Rails developer. Inspired by [hackathon-starter](https://github.com/sahat/hackathon-starter).
-
-# Demo
-
-[http://hackathon-starter-rails.herokuapp.com/](http://hackathon-starter-rails.herokuapp.com/)
+A template for Rails projects. Inspired by [hackathon-starter](https://github.com/sahat/hackathon-starter).
 
 # Usage
 
@@ -24,8 +20,6 @@ Hackathon starter for Rails developer. Inspired by [hackathon-starter](https://g
 - [Font awesome](fortawesome.github.io/Font-Awesome/)
 - ID/Password Login (Devise)
 - ERD diagram generation
-
-# LETS'S HACKING!
 
 # LICENSE
 
