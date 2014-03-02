@@ -1,7 +1,10 @@
 source 'https://rubygems.org'
+source "https://rails-assets.org"
+
+ruby '2.1.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.2'
+gem 'rails'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
@@ -27,9 +30,24 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+#Use Slim for views
+gem 'slim'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
+end
+
+group :development do
+  #To generate ERD database images
+  gem "rails-erd"
+
+  #Use thin instead of WEBrick
+  gem "thin"
+
+  #Get descriptive and useful errors
+  gem "better_errors"
+
 end
 
 # Use ActiveModel has_secure_password
@@ -45,6 +63,10 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'devise'
-gem 'omniauth'
-gem 'omniauth-twitter'
-gem 'omniauth-facebook'
+# gem 'omniauth'
+# gem 'omniauth-twitter'
+# gem 'omniauth-facebook'
+
+
+#BEGIN RAILS ASSETS BOWER PACKAGES
+gem 'rails-assets-bootstrap'

@@ -4,7 +4,7 @@ Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  config.secret_key = 'af4378615c0df40ab2b7650bf68aafebe28eb3bf1a1c937225d2085d6aad58335c1dc2f0e2d9ce9da89c36090d3a84980dcc7f90fffea7226a0e32d902a939b0'
+  config.secret_key = '197cdc41c1d07210d2e1fc021f053fb60c2fd3abc8161c7fea3d28a93a861b2996051d5dbd66fa6bb60551807d172ccfb55f55729238495199c1c3c395b3f50c'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -228,9 +228,9 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
-  yaml = YAML.load_file(Rails.root.join('config', 'webapi.yml'))[Rails.env]
-  config.omniauth :facebook, yaml['facebook']['key'], yaml['facebook']['secret'] 
-  config.omniauth :twitter,  yaml['twitter']['key'], yaml['twitter']['secret'] 
+  # yaml = YAML.load_file(Rails.root.join('config', 'webapi.yml'))[Rails.env]
+  # config.omniauth :facebook, yaml['facebook']['key'], yaml['facebook']['secret']
+  # config.omniauth :twitter,  yaml['twitter']['key'], yaml['twitter']['secret']
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

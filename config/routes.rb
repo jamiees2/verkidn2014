@@ -1,8 +1,23 @@
 HackathonStarterRails::Application.routes.draw do
-  devise_for :users, :controllers => {
-    :registrations => "users/registrations",
-    :omniauth_callbacks => "users/omniauth_callbacks" 
-  }
+  devise_for :users, skip: [:sessions, :registrations, :passwords]
+  as :user do
+    get 'login' => 'devise/sessions#new', :as => :new_user_session
+    post 'login' => 'devise/sessions#create', :as => :user_session
+
+    delete 'logout' => 'devise/sessions#destroy', :as => :destroy_user_session
+    get 'logout' => 'devise/sessions#destroy'
+
+    get 'register' => 'devise/registrations#new', :as => :new_user_registration
+    post 'register' => 'devise/registrations#create', :as => :user_registration
+
+    get 'user' => 'devise/registrations#edit', :as => :edit_user_registration
+    put 'register' => 'devise/registrations#update'
+
+    get 'reset' => 'devise/passwords#new', :as => :new_user_password
+    get 'reset_password' => 'devise/passwords#edit', :as => :edit_user_password
+    post 'reset' => 'devise/passwords#create', :as => :user_password
+    put 'reset' => 'devise/passwords#update'
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -43,7 +58,7 @@ HackathonStarterRails::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
