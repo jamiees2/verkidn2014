@@ -9,11 +9,11 @@ Verkidn2014::Application.routes.draw do
     delete 'logout' => 'devise/sessions#destroy', :as => :destroy_user_session
     get 'logout' => 'devise/sessions#destroy'
 
-    get 'register' => 'devise/registrations#new', :as => :new_user_registration
-    post 'register' => 'devise/registrations#create', :as => :user_registration
+    get 'register' => 'users/registrations#new', :as => :new_user_registration
+    post 'register' => 'users/registrations#create', :as => :user_registration
 
-    get 'user' => 'devise/registrations#edit', :as => :edit_user_registration
-    put 'register' => 'devise/registrations#update'
+    get 'user' => 'users/registrations#edit', :as => :edit_user_registration
+    put 'register' => 'users/registrations#update'
 
     get 'reset' => 'devise/passwords#new', :as => :new_user_password
     get 'reset_password' => 'devise/passwords#edit', :as => :edit_user_password

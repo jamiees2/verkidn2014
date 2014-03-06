@@ -26,6 +26,7 @@ class WorksController < ApplicationController
   # POST /works.json
   def create
     @work = Work.new(work_params)
+    @work.creator = current_user
 
     respond_to do |format|
       if @work.save

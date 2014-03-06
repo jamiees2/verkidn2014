@@ -11,12 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140306103743) do
+ActiveRecord::Schema.define(version: 20140306111611) do
 
   create_table "roles", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "roles_users", id: false, force: true do |t|
+    t.integer "role_id"
+    t.integer "user_id"
   end
 
   create_table "statuses", force: true do |t|
@@ -49,8 +54,10 @@ ActiveRecord::Schema.define(version: 20140306103743) do
     t.integer  "status_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "creator_id"
   end
 
+  add_index "works", ["creator_id"], name: "index_works_on_creator_id"
   add_index "works", ["status_id"], name: "index_works_on_status_id"
 
 end
