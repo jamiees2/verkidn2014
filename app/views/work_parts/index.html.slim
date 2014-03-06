@@ -1,0 +1,36 @@
+.row
+  .col-xs-12
+    h1
+      | ASSIGNMENTS
+    table.table.table-striped
+      thead
+        tr
+          th
+            | Name
+          th
+            | Description
+          th
+            | Assignees
+          th
+          th
+          th
+      tbody
+        - @work_parts.each do |work_part|
+          tr
+            td
+              = work_part.name
+            td
+              = work_part.description
+            td
+              = link_to 'Assignees', work_work_part_assignments_path(@work,work_part)
+            td
+              = link_to 'Show', work_work_part_path(@work,work_part)
+            td
+              -if can? :update, WorkPart
+                = link_to 'Edit', edit_work_work_part_path(@work,work_part)
+            td
+              -if can? :destroy, WorkPart
+                = link_to 'Destroy', work_work_part_path(@work,work_part), method: :delete, data: { confirm: 'Are you sure?' }
+    br
+    - if can? :create, WorkPart
+      = link_to 'New Work', new_work_work_part_path(@work), :class => 'btn btn-primary'

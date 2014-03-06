@@ -1,0 +1,13 @@
+p#notice
+  = notice
+p
+  strong
+    | Name:
+  = @work_part.name
+p
+  strong
+    | Description:
+  = @work_part.description
+= link_to 'Edit', edit_work_work_part_path(@work,@work_part)
+|  |
+= link_to 'Back', work_work_parts_path(@work)

@@ -22,14 +22,19 @@ Status.create(name: "Delayed")
 Status.create(name: "Abandoned")
 
 admin_role = Role.create!(name: "Manager")
-Role.create(name: "Worker")
+standard_role = Role.create(name: "Worker")
 users = {
-	"jamiees2@gmail.com" => "jeska193sajd"
+	"jamiees2@gmail.com" => ["jeska193sajd", true],
+  "jaes84@gmail.com" => ["1234564658", false]
 }
 users.each do |email,password|
 	if User.find_by_email(email).blank?
 		puts "Creating user #{email} with password: #{password}"
-		user = User.create!(email: email.dup, password: password.dup, password_confirmation: password.dup)
-    user.roles << admin_role
+		user = User.create!(email: email.dup, password: password[0].dup, password_confirmation: password[0].dup)
+    if password[1]
+      user.roles << admin_role
+    else
+      user.roles << standard_role
+    end
 	end
 end

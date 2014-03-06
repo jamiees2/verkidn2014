@@ -5,26 +5,31 @@ class WorksController < ApplicationController
   # GET /works
   # GET /works.json
   def index
-    @works = Work.all
+    authorize! :read, Work
+    @works = Work.includes(:status)
   end
 
   # GET /works/1
   # GET /works/1.json
   def show
+    authorize! :read, Work
   end
 
   # GET /works/new
   def new
+    authorize! :create, Work
     @work = Work.new
   end
 
   # GET /works/1/edit
   def edit
+    authorize! :update, Work
   end
 
   # POST /works
   # POST /works.json
   def create
+    authorize! :create, Work
     @work = Work.new(work_params)
     @work.creator = current_user
 
@@ -42,6 +47,8 @@ class WorksController < ApplicationController
   # PATCH/PUT /works/1
   # PATCH/PUT /works/1.json
   def update
+
+    authorize! :update, Work
     respond_to do |format|
       if @work.update(work_params)
         format.html { redirect_to @work, notice: 'Work was successfully updated.' }
@@ -56,6 +63,7 @@ class WorksController < ApplicationController
   # DELETE /works/1
   # DELETE /works/1.json
   def destroy
+    authorize! :destroy, Work
     @work.destroy
     respond_to do |format|
       format.html { redirect_to works_url }

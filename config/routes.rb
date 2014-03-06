@@ -26,7 +26,11 @@ Verkidn2014::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
-  resources :works
+  resources :works do
+    resources :work_parts, :path => "work_parts" do
+      resources :assignments
+    end
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -2,12 +2,12 @@ class Ability
   include CanCan::Ability
 
   def initialize ( user )
-    user || = User. new # guest user
+    user ||= User.new # guest user
 
-    if user.role :manager
+    if user.role? :manager
       can :manage , :all
-    elsif user.role :worker
-      can :read , [ Work ]
+    elsif user.role? :worker
+      can :read , [ Work, WorkPart ]
       # manage products, assets he owns
       # can :manage , Product do | product |
       #   product. try ( :owner ) == user
