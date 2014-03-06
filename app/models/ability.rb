@@ -6,10 +6,10 @@ class Ability
     if user.role? :manager
       can :manage , :all
     elsif user.role? :worker
-      can :read, [ Work, WorkPart, Assignment ]
+      can :read, [ Project, Task, Assignment ]
       can :manage, [ WorkLog ]
       # manage products, assets he owns
-      can :update , WorkPart do | work_part |
+      can :update , Task do | work_part |
         work_part.users.include? user
       end
       # can :manage , Asset do | asset |

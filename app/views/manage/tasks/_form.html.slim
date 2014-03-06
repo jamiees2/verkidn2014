@@ -1,13 +1,13 @@
 .row
   .col-xs-6.no-float.center-block
-    = form_for(@work_part, :url => @url, :html => { :class => "form-horizontal"}) do |f|
-      - if @work_part.errors.any?
+    = form_for(@task, :url => @url, :html => { :class => "form-horizontal"}) do |f|
+      - if @task.errors.any?
         #error_explanation
           h2
-            = pluralize(@work_part.errors.count, "error")
-            |  prohibited this work from being saved:
+            = pluralize(@task.errors.count, "error")
+            |  prohibited this task from being saved:
           ul
-            - @work_part.errors.full_messages.each do |msg|
+            - @task.errors.full_messages.each do |msg|
               li
                 = msg
       .field

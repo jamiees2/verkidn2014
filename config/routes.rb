@@ -31,8 +31,8 @@ Verkidn2014::Application.routes.draw do
   end
 
   scope module: "manage" do
-    resources :works do
-      resources :work_parts do
+    resources :projects do
+      resources :tasks do
         resources :assignments
       end
     end

@@ -1,0 +1,36 @@
+.row
+  .col-xs-12
+    h1
+      | Tasks
+    table.table.table-striped
+      thead
+        tr
+          th
+            | Name
+          th
+            | Description
+          th
+            | Assignees
+          th
+          th
+          th
+      tbody
+        - @tasks.each do |task|
+          tr
+            td
+              = task.name
+            td
+              = task.description
+            td
+              = link_to 'Assignees', project_task_assignments_path(@project,task)
+            td
+              = link_to 'Show', project_task_path(@project,task)
+            td
+              -if can? :update, task
+                = link_to 'Edit', edit_project_task_path(@project,task)
+            td
+              -if can? :destroy, task
+                = link_to 'Destroy', project_task_path(@project,task), method: :delete, data: { confirm: 'Are you sure?' }
+    br
+    - if can? :create, Task
+      = link_to 'New Work', new_project_task_path(@project), :class => 'btn btn-primary'

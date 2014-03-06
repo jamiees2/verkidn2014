@@ -3,7 +3,11 @@ p#notice
 p
   strong
     | Name:
+  = @assignment.user.name
+p
+  strong
+    | Email:
   = @assignment.user.email
-= link_to 'Edit', edit_work_work_part_assignment_path(@work,@work_part,@assignment)
+= link_to 'Edit', edit_project_task_assignment_path(@project,@task,@assignment)
 |  |
-= link_to 'Back', work_work_part_assignments_path(@work,@work_part)
+= link_to 'Back', project_task_assignments_path(@project,@task)

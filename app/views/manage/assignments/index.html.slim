@@ -1,12 +1,14 @@
 .row
   .col-xs-12
     h1
-      | ASSIGNMENTS
+      | Assignments
     table.table.table-striped
       thead
         tr
           th
             | Name
+          th
+            | Email
           th
           th
           th
@@ -14,15 +16,17 @@
         - @assignments.each do |assignment|
           tr
             td
-              = assignment.user.name || assignment.user.email
+              = assignment.user.name
             td
-              = link_to 'Show', work_work_part_assignment_path(@work,@work_part,assignment)
+              = assignment.user.email
+            td
+              = link_to 'Show', project_task_assignment_path(@project,@task,assignment)
             td
               -if can? :update, Assignment
-                = link_to 'Edit', edit_work_work_part_assignment_path(@work,@work_part,assignment)
+                = link_to 'Edit', edit_project_task_assignment_path(@project,@task,assignment)
             td
               -if can? :destroy, Assignment
-                = link_to 'Destroy', work_work_part_assignment_path(@work,@work_part,assignment), method: :delete, data: { confirm: 'Are you sure?' }
+                = link_to 'Destroy', project_task_assignment_path(@project,@task,assignment), method: :delete, data: { confirm: 'Are you sure?' }
     br
     - if can? :create, Assignment
-      = link_to 'Assign to User', new_work_work_part_assignment_path(@work,@work_part), :class => 'btn btn-primary'
+      = link_to 'Assign to User', new_project_task_assignment_path(@project,@task), :class => 'btn btn-primary'

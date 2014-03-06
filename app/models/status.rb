@@ -1,3 +1,3 @@
 class Status < ActiveRecord::Base
-  has_many :work
+  has_many :projects
 end

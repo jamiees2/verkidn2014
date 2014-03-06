@@ -1,6 +1,6 @@
 .row
   .col-xs-6.no-float.center-block
-    = form_for(@assignment, :url => work_work_part_assignments_path(@work,@work_part), :html => { :class => "form-horizontal"}) do |f|
+    = form_for(@assignment, :url => @url, :html => { :class => "form-horizontal"}) do |f|
       - if @assignment.errors.any?
         #error_explanation
           h2

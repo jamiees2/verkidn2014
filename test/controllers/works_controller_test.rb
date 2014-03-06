@@ -35,7 +35,7 @@ class WorksControllerTest < ActionController::TestCase
   end
 
   test "should update work" do
-    patch :update, id: @work, work: { description: @work.description, name: @work.name, status_id: @work.status_id }
+    patch :update, id: @project, work: { description: @work.description, name: @work.name, status_id: @work.status_id }
     assert_redirected_to work_path(assigns(:work))
   end
 
@@ -44,6 +44,6 @@ class WorksControllerTest < ActionController::TestCase
       delete :destroy, id: @work
     end
 
-    assert_redirected_to works_path
+    assert_redirected_to projects_path
   end
 end

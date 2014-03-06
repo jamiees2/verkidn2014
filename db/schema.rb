@@ -11,14 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140306192852) do
+ActiveRecord::Schema.define(version: 20140306204408) do
 
   create_table "assignments", force: true do |t|
     t.integer  "user_id"
-    t.integer  "work_part_id"
+    t.integer  "task_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "projects", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "status_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "creator_id"
+  end
+
+  add_index "projects", ["creator_id"], name: "index_projects_on_creator_id"
+  add_index "projects", ["status_id"], name: "index_projects_on_status_id"
 
   create_table "roles", force: true do |t|
     t.string   "name"
@@ -33,6 +45,15 @@ ActiveRecord::Schema.define(version: 20140306192852) do
 
   create_table "statuses", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tasks", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "creator_id"
+    t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -65,26 +86,5 @@ ActiveRecord::Schema.define(version: 20140306192852) do
   end
 
   add_index "work_logs", ["assignment_id"], name: "index_work_logs_on_assignment_id"
-
-  create_table "work_parts", force: true do |t|
-    t.string   "name"
-    t.string   "description"
-    t.integer  "creator_id"
-    t.integer  "work_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "works", force: true do |t|
-    t.string   "name"
-    t.string   "description"
-    t.integer  "status_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "creator_id"
-  end
-
-  add_index "works", ["creator_id"], name: "index_works_on_creator_id"
-  add_index "works", ["status_id"], name: "index_works_on_status_id"
 
 end

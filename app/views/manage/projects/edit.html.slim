@@ -1,0 +1,8 @@
+h1.text-center
+  | Editing projects
+= render 'form'
+.row
+  .col-xs-6.no-float.center-block
+    = link_to 'Show', @projects
+    |  |
+    = link_to 'Back', projects_path

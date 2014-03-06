@@ -1,8 +1,8 @@
 h1.text-center
-  | Editing work
+  | Editing task
 = render 'form'
 .row
   .col-xs-6.no-float.center-block
-    = link_to 'Show', project_task_path(@project,work_part)
+    = link_to 'Show', project_task_path(@project,@task)
     |  |
     = link_to 'Back', project_tasks_path(@project)

@@ -1,7 +1,7 @@
 .row
   .col-xs-12
     h1
-      | Work assigned to you
+      | Tasks assigned to you
     table.table.table-striped
       thead
         tr
@@ -16,8 +16,8 @@
         - @assignments.each do |assignment|
           tr
             td
-              = link_to assignment.work_part.name, work_work_part_path(assignment.work_part.work_id,assignment.work_part)
+              = link_to assignment.task.name, project_task_path(assignment.task.project_id,assignment.task)
             td
-              = assignment.work_part.description
+              = assignment.task.description
             td
               = link_to 'Work Logs', assignment_worklog_index_path(assignment)
