@@ -10,20 +10,20 @@ class Manage::AssignmentsController < Manage::ApplicationController
   # GET /works/1
   # GET /works/1.json
   def show
-    authorize! :read, Assignment
+    authorize! :read, @assignment
   end
 
   # GET /works/new
   def new
     authorize! :create, Assignment
     @assignment = Assignment.new
-    @url = project_tasks_assignments_path(@project)
+    @url = project_task_assignments_path(@project,@task)
   end
 
   # GET /works/1/edit
   def edit
-    authorize! :update, Assignment
-    @url = project_task_assignments_path(@project,@work_part)
+    authorize! :update, @assignment
+    @url = project_task_assignment_path(@project,@task,@assignment)
   end
 
   # POST /works
@@ -37,8 +37,8 @@ class Manage::AssignmentsController < Manage::ApplicationController
 
     respond_to do |format|
       if @assignment.save
-        format.html { redirect_to project_work_part_assignment_path(@project,@task,@assignment), notice: 'WorkPart was successfully created.' }
-        format.json { render action: 'show', status: :created, location: project_work_part_assignment_url(@project,@task,@assignment) }
+        format.html { redirect_to project_task_assignment_path(@project,@task,@assignment), notice: 'WorkPart was successfully created.' }
+        format.json { render action: 'show', status: :created, location: project_task_assignment_url(@project,@task,@assignment) }
       else
         format.html { render action: 'new' }
         format.json { render json: @assignment.errors, status: :unprocessable_entity }
@@ -50,10 +50,10 @@ class Manage::AssignmentsController < Manage::ApplicationController
   # PATCH/PUT /works/1.json
   def update
 
-    authorize! :update, Assignment
+    authorize! :update, @assignment
     respond_to do |format|
-      if @task.update(work_params)
-        format.html { redirect_to project_work_part_assignment_path(@project,@task,@assignment), notice: 'WorkPart was successfully updated.' }
+      if @task.update(assignment_params)
+        format.html { redirect_to project_task_assignment_path(@project,@task,@assignment), notice: 'WorkPart was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -65,10 +65,10 @@ class Manage::AssignmentsController < Manage::ApplicationController
   # DELETE /works/1
   # DELETE /works/1.json
   def destroy
-    authorize! :destroy, Assignment
+    authorize! :destroy, @assignment
     @assignment.destroy
     respond_to do |format|
-      format.html { redirect_to project_work_part_assignments_path(@project,@task) }
+      format.html { redirect_to project_task_assignments_path(@project,@task) }
       format.json { head :no_content }
     end
   end

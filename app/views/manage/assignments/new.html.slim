@@ -1,6 +1,6 @@
 h1.text-center
-  | New work
+  | New assignment
 = render 'form'
 .row
   .col-xs-6.no-float.center-block
-    = link_to 'Back', project_task_path(@project)
+    = link_to 'Back', project_task_assignments_path(@project,@task)

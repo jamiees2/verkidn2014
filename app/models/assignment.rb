@@ -1,5 +1,5 @@
 class Assignment < ActiveRecord::Base
   belongs_to :user
   belongs_to :task
-  has_many :work_logs
+  has_many :work_logs, :dependent => :destroy
 end

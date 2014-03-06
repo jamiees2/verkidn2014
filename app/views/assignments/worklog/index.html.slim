@@ -30,7 +30,7 @@
                 = link_to 'Destroy', assignment_worklog_path(@assignment, work_log), method: :delete, data: { confirm: 'Are you sure?' }
 
     p
-      | Number of hours:
+      | Total number of hours:&nbsp;
       = @num_hours
     br
     - if can? :create, WorkLog
