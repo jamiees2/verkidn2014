@@ -69,6 +69,7 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'devise'
+gem 'cancan'
 # gem 'omniauth'
 # gem 'omniauth-twitter'
 # gem 'omniauth-facebook'

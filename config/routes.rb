@@ -1,4 +1,6 @@
 Verkidn2014::Application.routes.draw do
+  resources :works
+
   devise_for :users, skip: [:sessions, :registrations, :passwords]
   as :user do
     get 'login' => 'devise/sessions#new', :as => :new_user_session
@@ -23,6 +25,8 @@ Verkidn2014::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'home#index'
+
+  resources :works
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
