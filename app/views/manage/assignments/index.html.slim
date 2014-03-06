@@ -14,7 +14,7 @@
         - @assignments.each do |assignment|
           tr
             td
-              = assignment.user.email
+              = assignment.user.name || assignment.user.email
             td
               = link_to 'Show', work_work_part_assignment_path(@work,@work_part,assignment)
             td

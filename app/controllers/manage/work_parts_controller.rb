@@ -15,13 +15,15 @@ class Manage::WorkPartsController < Manage::ApplicationController
 
   # GET /works/new
   def new
-    authorize! :create, WorkPart
     @work_part = WorkPart.new
+    authorize! :create, @work_part
+    @url = work_work_parts_path(@work)
   end
 
   # GET /works/1/edit
   def edit
-    authorize! :update, WorkPart
+    @url = work_work_part_path(@work,@work_part)
+    authorize! :update, @work_part
   end
 
   # POST /works
@@ -47,9 +49,9 @@ class Manage::WorkPartsController < Manage::ApplicationController
   # PATCH/PUT /works/1.json
   def update
 
-    authorize! :update, WorkPart
+    authorize! :update, @work_part
     respond_to do |format|
-      if @work_part.update(work_params)
+      if @work_part.update(work_part_params)
         format.html { redirect_to work_work_part_path(@work,@work_part), notice: 'WorkPart was successfully updated.' }
         format.json { head :no_content }
       else

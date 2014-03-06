@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140306130518) do
+ActiveRecord::Schema.define(version: 20140306192852) do
 
   create_table "assignments", force: true do |t|
     t.integer  "user_id"
@@ -50,10 +50,21 @@ ActiveRecord::Schema.define(version: 20140306130518) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "work_logs", force: true do |t|
+    t.integer  "hours"
+    t.text     "description"
+    t.integer  "assignment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "work_logs", ["assignment_id"], name: "index_work_logs_on_assignment_id"
 
   create_table "work_parts", force: true do |t|
     t.string   "name"

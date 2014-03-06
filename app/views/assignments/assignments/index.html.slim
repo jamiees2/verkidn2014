@@ -1,0 +1,23 @@
+.row
+  .col-xs-12
+    h1
+      | Work assigned to you
+    table.table.table-striped
+      thead
+        tr
+          th
+            | Name
+          th
+            | Description
+          th
+          th
+          th
+      tbody
+        - @assignments.each do |assignment|
+          tr
+            td
+              = link_to assignment.work_part.name, work_work_part_path(assignment.work_part.work_id,assignment.work_part)
+            td
+              = assignment.work_part.description
+            td
+              = link_to 'Work Logs', assignment_worklog_index_path(assignment)

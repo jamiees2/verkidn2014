@@ -26,10 +26,10 @@
             td
               = link_to 'Show', work_work_part_path(@work,work_part)
             td
-              -if can? :update, WorkPart
+              -if can? :update, work_part
                 = link_to 'Edit', edit_work_work_part_path(@work,work_part)
             td
-              -if can? :destroy, WorkPart
+              -if can? :destroy, work_part
                 = link_to 'Destroy', work_work_part_path(@work,work_part), method: :delete, data: { confirm: 'Are you sure?' }
     br
     - if can? :create, WorkPart

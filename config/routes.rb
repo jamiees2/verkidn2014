@@ -23,10 +23,11 @@ Verkidn2014::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'assignments/list#index'
+  root 'assignments/assignments#index'
 
-  namespace :assignments do
-    resources :list
+
+  resources :assignments, module: "assignments" do
+    resources :worklog
   end
 
   scope module: "manage" do

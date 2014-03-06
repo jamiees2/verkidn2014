@@ -3,15 +3,15 @@ class Ability
 
   def initialize ( user )
     user ||= User.new # guest user
-
     if user.role? :manager
       can :manage , :all
     elsif user.role? :worker
-      can :read , [ Work, WorkPart ]
+      can :read, [ Work, WorkPart, Assignment ]
+      can :manage, [ WorkLog ]
       # manage products, assets he owns
-      # can :manage , Product do | product |
-      #   product. try ( :owner ) == user
-      # end
+      can :update , WorkPart do | work_part |
+        work_part.users.include? user
+      end
       # can :manage , Asset do | asset |
       #   asset. assetable try ( :owner ) == user
       # end
