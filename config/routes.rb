@@ -1,4 +1,4 @@
-RailsTemplate::Application.routes.draw do
+Verkidn2014::Application.routes.draw do
   devise_for :users, skip: [:sessions, :registrations, :passwords]
   as :user do
     get 'login' => 'devise/sessions#new', :as => :new_user_session
