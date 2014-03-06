@@ -1,5 +1,4 @@
 Verkidn2014::Application.routes.draw do
-  resources :works
 
   devise_for :users, skip: [:sessions, :registrations, :passwords]
   as :user do
@@ -24,11 +23,17 @@ Verkidn2014::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'home#index'
+  root 'assignments/list#index'
 
-  resources :works do
-    resources :work_parts, :path => "work_parts" do
-      resources :assignments
+  namespace :assignments do
+    resources :list
+  end
+
+  scope module: "manage" do
+    resources :works do
+      resources :work_parts do
+        resources :assignments
+      end
     end
   end
 

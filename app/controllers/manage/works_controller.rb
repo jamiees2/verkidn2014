@@ -1,4 +1,4 @@
-class WorksController < ApplicationController
+class Manage::WorksController < Manage::ApplicationController
   before_action :set_work, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
@@ -18,12 +18,14 @@ class WorksController < ApplicationController
   # GET /works/new
   def new
     authorize! :create, Work
+    @url = works_path
     @work = Work.new
   end
 
   # GET /works/1/edit
   def edit
     authorize! :update, Work
+    @url = work_path(@work)
   end
 
   # POST /works

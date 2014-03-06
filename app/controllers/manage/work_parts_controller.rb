@@ -1,4 +1,4 @@
-class WorkPartsController < ApplicationController
+class Manage::WorkPartsController < Manage::ApplicationController
 
   before_filter :find_work
   before_action :set_work_part, only: [:show, :edit, :update, :destroy]

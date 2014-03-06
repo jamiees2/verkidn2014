@@ -28,13 +28,13 @@
             td
               = link_to 'Work Parts', work_work_parts_path(work)
             td
-              = link_to 'Show', work
+              = link_to 'Show', work_path(work)
             td
               -if can? :update, Work
                 = link_to 'Edit', edit_work_path(work)
             td
               -if can? :destroy, Work
-                = link_to 'Destroy', work, method: :delete, data: { confirm: 'Are you sure?' }
+                = link_to 'Destroy', work_path(work), method: :delete, data: { confirm: 'Are you sure?' }
     br
     - if can? :create, Work
       = link_to 'New Work', new_work_path, :class => 'btn btn-primary'

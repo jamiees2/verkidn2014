@@ -1,0 +1,18 @@
+.row
+  .col-xs-6.no-float.center-block
+    = form_for(@assignment, :url => work_work_part_assignments_path(@work,@work_part), :html => { :class => "form-horizontal"}) do |f|
+      - if @assignment.errors.any?
+        #error_explanation
+          h2
+            = pluralize(@assignment.errors.count, "error")
+            |  prohibited this work from being saved:
+          ul
+            - @assignment.errors.full_messages.each do |msg|
+              li
+                = msg
+      .field
+        = f.label :user
+        br
+        = f.collection_select :user_id, User.all, :id, :email, {},:class => "form-control"
+      .actions
+        = f.submit :class => "btn btn-lg btn-primary"

@@ -1,0 +1,9 @@
+p#notice
+  = notice
+p
+  strong
+    | Name:
+  = @assignment.user.email
+= link_to 'Edit', edit_work_work_part_assignment_path(@work,@work_part,@assignment)
+|  |
+= link_to 'Back', work_work_part_assignments_path(@work,@work_part)
