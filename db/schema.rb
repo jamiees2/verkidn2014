@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140306204408) do
+ActiveRecord::Schema.define(version: 20140307091718) do
 
   create_table "assignments", force: true do |t|
     t.integer  "user_id"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20140306204408) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "assignments", ["user_id", "task_id"], name: "index_assignments_on_user_id_and_task_id", unique: true
 
   create_table "projects", force: true do |t|
     t.string   "name"

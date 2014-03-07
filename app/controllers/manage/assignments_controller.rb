@@ -18,6 +18,12 @@ class Manage::AssignmentsController < Manage::ApplicationController
     authorize! :create, Assignment
     @assignment = Assignment.new
     @url = project_task_assignments_path(@project,@task)
+    users_used = @task.assignments.map(&:user_id)
+    unless users_used.empty?
+      @users = User.where('id not in (?)', users_used)
+    else
+      @users = User.all
+    end
   end
 
   # GET /works/1/edit
@@ -36,7 +42,7 @@ class Manage::AssignmentsController < Manage::ApplicationController
     # @task.work = @work
 
     respond_to do |format|
-      if @assignment.save
+      if @assignment.save!
         format.html { redirect_to project_task_assignment_path(@project,@task,@assignment), notice: 'WorkPart was successfully created.' }
         format.json { render action: 'show', status: :created, location: project_task_assignment_url(@project,@task,@assignment) }
       else
