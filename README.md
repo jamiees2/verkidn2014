@@ -25,7 +25,7 @@ A template for Rails projects. Inspired by [hackathon-starter](https://github.co
 #Generating an ERD diagram
 Run the following command
 
-    $ rake erd orientation=vertical title='<diagram name>' attributes="foreign_keys,primary_keys,timestamps,inheritance,content"
+    $ rake erd title='<diagram name>' attributes="foreign_keys,primary_keys,timestamps,inheritance,content"
 
 More information can be found [here](http://rails-erd.rubyforge.org/customise.html#available-options)
 
