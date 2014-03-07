@@ -1,5 +1,8 @@
 .row
   .col-xs-12
+    - if flash[:notice]
+      .alert.alert-success
+        = notice
     h1
       | Assignments
     table.table.table-striped
@@ -9,24 +12,35 @@
             | Name
           th
             | Email
-          th
-          th
-          th
       tbody
         - @assignments.each do |assignment|
           tr
             td
-              = assignment.user.name
+              a data-toggle="modal" data-target="#modal-#{assignment.id}" href="#"
+                = assignment.user.name
             td
               = assignment.user.email
-            td
-              = link_to 'Show', project_task_assignment_path(@project,@task,assignment)
-            td
-              -if can? :update, Assignment
-                = link_to 'Edit', edit_project_task_assignment_path(@project,@task,assignment)
-            td
-              -if can? :destroy, Assignment
-                = link_to 'Destroy', project_task_assignment_path(@project,@task,assignment), method: :delete, data: { confirm: 'Are you sure?' }
+          - content_for :modals do
+            .modal.fade id="modal-#{assignment.id}" aria-hidden="true" aria-labelledby="" role="dialog" tabindex="-1"
+              .modal-dialog
+                .modal-content
+                  .modal-header
+                    button.close aria-hidden="true" data-dismiss="modal" type="button"
+                    h4#myModalLabel.modal-title = @task.name
+                  .modal-body
+                    .row
+                      .col-xs-12
+                        p = assignment.user.name
+                        p 
+                          a href="mailto:#{assignment.user.email}" = assignment.user.email
+    
+                  .modal-footer
+                    -if can? :destroy, assignment
+                      = link_to 'Unassign', project_task_assignment_path(@project,@task,assignment), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger pull-left"
+                    -if can? :update, assignment
+                      = link_to 'Edit', edit_project_task_assignment_path(@project,@task,assignment), class: "btn btn-info"
+                    button.btn.btn-default data-dismiss="modal" type="button" Close
     br
     - if can? :create, Assignment
       = link_to 'Assign to User', new_project_task_assignment_path(@project,@task), :class => 'btn btn-primary'
+= yield :modals

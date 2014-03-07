@@ -1,10 +1,22 @@
 class Manage::TasksController < Manage::ApplicationController
 
   before_filter :find_project
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :open, :close]
   def index
     authorize! :read, Task
     @tasks = @project.tasks
+  end
+  
+  def opened
+    authorize! :read, Task
+    @tasks = @project.tasks.where(open: true)
+    render :index
+  end
+  
+  def closed
+    authorize! :read, Task
+    @tasks = @project.tasks.where(open: false)
+    render :index
   end
 
   # GET /works/1
@@ -24,6 +36,32 @@ class Manage::TasksController < Manage::ApplicationController
   def edit
     @url = project_task_path(@project,@task)
     authorize! :update, @task
+  end
+  
+  def open
+    authorize! :update, @task
+    respond_to do |format|
+      if @task.update_attributes(open: true)
+        format.html { redirect_to project_tasks_path(@project), notice: 'Task was successfully opened.' }
+        format.json { render action: 'show', status: :created, location: project_tasks_url(@project) }
+      else
+        format.html { redirect_to project_tasks_path(@project), notice: 'Task could not be opened.' }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
+  def close
+    authorize! :update, @task
+    respond_to do |format|
+      if @task.update_attributes(open: false)
+        format.html { redirect_to project_tasks_path(@project), notice: 'Task was successfully closed.' }
+        format.json { render action: 'show', status: :created, location: project_tasks_url(@project) }
+      else
+        format.html { redirect_to project_tasks_path(@project), notice: 'Task could not be closed.' }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # POST /works

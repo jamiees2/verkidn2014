@@ -26,7 +26,7 @@ Verkidn2014::Application.routes.draw do
   root 'assignments/assignments#index'
 
 
-  resources :assignments, module: "assignments" do
+  resources :assignments, module: "assignments", only: [:index] do
     resources :worklog
   end
 
@@ -34,9 +34,17 @@ Verkidn2014::Application.routes.draw do
     resources :projects do
       resources :tasks do
         resources :assignments
+        collection do
+          get :open, to: :opened
+          get :closed
+        end
+        post :close, on: :member
+        post :open, on: :member
       end
     end
   end
+  
+  resources :employees, module: "employees"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
