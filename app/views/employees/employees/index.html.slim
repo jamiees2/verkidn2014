@@ -11,8 +11,32 @@
       tbody
         - @users.each do |user|
           tr
-            td = user.name
+            td
+              a data-toggle="modal" data-target="#modal-#{user.id}" href="#"
+                = user.name
             td = user.role.name
             td = link_to "Work Logs", employee_worklog_index_path(user)
             td = link_to "Assignments", employee_assignments_path(user)
+            - content_for :modals do
+              .modal.fade id="modal-#{user.id}" aria-hidden="true" aria-labelledby="" role="dialog" tabindex="-1"
+                .modal-dialog
+                  .modal-content
+                    .modal-header
+                      button.close aria-hidden="true" data-dismiss="modal" type="button"
+                      h4#myModalLabel.modal-title = user.name
+                    .modal-body
+                      .row
+                        .col-xs-12
+                          p = user.name
+                          p 
+                            a href="mailto:#{user.email}" = user.email
+                          p = user.role.name
+      
+                    .modal-footer
+                      -if can? :destroy, user
+                        = link_to 'Unassign', employee_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger pull-left"
+                      -if can? :update, user
+                        = link_to 'Edit', edit_employee_path(user), class: "btn btn-info"
+                      button.btn.btn-default data-dismiss="modal" type="button" Close
     = link_to "New Employee", new_employee_path, :class => "btn btn-primary"
+= yield :modals
