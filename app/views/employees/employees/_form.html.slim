@@ -10,11 +10,11 @@
       .field
         = f.label :email
         br
-        = f.email_field :email, :autofocus => true, :class => "form-control"
+        = f.email_field :email, :autofocus => true, :class => "form-control", :required => true
       .field
         = f.label :name
         br
-        = f.text_field :name, :class => "form-control"
+        = f.text_field :name, :class => "form-control", :required => true
       .field
         = f.label :password
         br

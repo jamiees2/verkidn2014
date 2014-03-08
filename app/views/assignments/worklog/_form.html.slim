@@ -10,14 +10,14 @@
       .field
         = f.label :hours
         br
-        = f.number_field :hours, min: 0, :class => "form-control"
+        = f.number_field :hours, min: 0, :class => "form-control", :required => true
       .field
         = f.label :description
         br
         = f.text_area :description, :class => "form-control"
       .field
         .input-group.date
-          = f.text_field :date, :class => "form-control", "data-format" => "YYYY-MM-DD" 
+          = f.text_field :date, :class => "form-control", "data-format" => "YYYY-MM-DD", :required => true
           span.input-group-addon
             span.glyphicon.glyphicon-time
 

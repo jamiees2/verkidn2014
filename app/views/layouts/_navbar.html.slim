@@ -19,7 +19,7 @@
       ul.nav.navbar-nav.navbar-right
         - unless user_signed_in?
           li
-            = link_to "Sign up", new_user_registration_path
+            = link_to "Sign In", new_user_session_path
         - else
           li.dropdown
             a.dropdown-toggle[href="#" data-toggle="dropdown"]

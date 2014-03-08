@@ -38,7 +38,7 @@
                           p 
                             strong Status: 
                             = task.open ? "Open" : "Closed"
-                          - if can? :update, task
+                          - if can? :change, task
                             - if task.open
                               = link_to "Close Task", close_project_task_path(@project,task), method: :post, class: "btn btn-warning"
                             - else
