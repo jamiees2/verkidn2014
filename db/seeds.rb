@@ -32,9 +32,9 @@ users.each do |email,password|
 		puts "Creating user #{email} with password: #{password}"
 		user = User.create!(email: email.dup, password: password[0].dup, password_confirmation: password[0].dup)
     if password[1]
-      user.roles << admin_role
+      user.role = admin_role
     else
-      user.roles << standard_role
-    end
+      user.role = standard_role
+		end
 	end
 end

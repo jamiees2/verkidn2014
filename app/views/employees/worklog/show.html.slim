@@ -1,0 +1,13 @@
+p#notice
+  = notice
+p
+  strong
+    | Hours:
+  = @work_log.hours
+p
+  strong
+    | Description:
+  = @work_log.description
+= link_to 'Edit', edit_assignment_worklog_path(@assignment,@work_log)
+|  |
+= link_to 'Back', assignment_worklog_index_path(@assignment)

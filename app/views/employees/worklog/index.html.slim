@@ -1,0 +1,35 @@
+.row
+  .col-xs-12
+    h1
+      | Work Logged by 
+      = @user.name
+    table.table.table-striped
+      thead
+        tr
+          th
+            | Hours
+          th
+            | Description
+          th
+            | Logged
+          th
+          th
+      tbody
+        - @work_logs.each do |work_log|
+          tr
+            td
+              = work_log.hours
+            td
+              = work_log.description
+            td
+              = work_log.created_at
+            td
+              -if can? :update, work_log
+                = link_to 'Edit', edit_assignment_worklog_path(work_log.assignment_id, work_log)
+            td
+              -if can? :destroy, work_log
+                = link_to 'Clear', assignment_worklog_path(work_log.assignment_id, work_log), method: :delete, data: { confirm: 'Are you sure?' }
+
+    p
+      | Total number of hours: 
+      = @num_hours

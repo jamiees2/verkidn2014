@@ -1,0 +1,18 @@
+.row
+  .col-xs-12
+    h1 Employees
+    table.table
+      thead
+        tr
+          th Name
+          th Role
+          th Work Logs
+          th Assignments
+      tbody
+        - @users.each do |user|
+          tr
+            td = user.name
+            td = user.role.name
+            td = link_to "Work Logs", employee_worklog_index_path(user)
+            td = link_to "Assignments", employee_assignments_path(user)
+    = link_to "New Employee", new_employee_path, :class => "btn btn-primary"

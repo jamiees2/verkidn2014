@@ -7,9 +7,10 @@ class User < ActiveRecord::Base
   has_many :projects
   has_many :assignments
   has_many :tasks, through: :assignments
-  has_and_belongs_to_many :roles
+  has_many :work_logs, through: :assignments
+  belongs_to :role
   def role? ( role )
-    return !! self.roles.find_by_name( role.to_s.camelize )
+    return self.role.name == role.to_s.camelize
   end
 
   def self.create_unique_string

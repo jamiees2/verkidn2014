@@ -44,7 +44,10 @@ Verkidn2014::Application.routes.draw do
     end
   end
   
-  resources :employees, module: "employees"
+  resources :employees, module: "employees" do
+    resources :worklog, only: [:index]
+    resources :assignments, only: [:index]
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
