@@ -8,8 +8,8 @@ Verkidn2014::Application.routes.draw do
     delete 'logout' => 'devise/sessions#destroy', :as => :destroy_user_session
     get 'logout' => 'devise/sessions#destroy'
 
-    # get 'register' => 'users/registrations#new', :as => :new_user_registration
-    # post 'register' => 'users/registrations#create', :as => :user_registration
+    get 'register' => 'users/registrations#new', :as => :new_user_registration
+    post 'register' => 'users/registrations#create', :as => :user_registration
 
     get 'user' => 'users/registrations#edit', :as => :edit_user_registration
     put 'register' => 'users/registrations#update'
