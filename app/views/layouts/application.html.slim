@@ -16,5 +16,8 @@ html[lang="en"]
     #wrap
       = render "layouts/navbar"
       .container
+        - if flash[:error]
+          .alert.alert-danger
+            = flash[:error]
         = yield
     = render :partial => "shared/footer"

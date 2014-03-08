@@ -38,5 +38,6 @@
                       -if can? :update, user
                         = link_to 'Edit', edit_employee_path(user), class: "btn btn-info"
                       button.btn.btn-default data-dismiss="modal" type="button" Close
-    = link_to "New Employee", new_employee_path, :class => "btn btn-primary"
+    - if can? :create, User
+      = link_to "New Employee", new_employee_path, :class => "btn btn-primary"
 = yield :modals

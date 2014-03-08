@@ -1,0 +1,17 @@
+table.table.table-striped
+  thead
+    tr
+      th
+        | Name
+      th
+        | Description
+      th
+  tbody
+    - @assignments.each do |assignment|
+      tr
+        td
+          = link_to assignment.task.name, project_task_path(assignment.task.project_id,assignment.task)
+        td
+          = assignment.task.description
+        td
+          = link_to 'Work Logs', assignment_worklog_index_path(assignment)

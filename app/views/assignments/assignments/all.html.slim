@@ -1,0 +1,6 @@
+.row
+  .col-xs-12
+    h1
+      | All tasks assigned to you
+    p = link_to "Open Assignments", assignments_path
+    = render "table"

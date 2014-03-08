@@ -6,11 +6,11 @@ class Ability
     if user.role? :manager
       can :manage , :all
     elsif user.role? :worker
-      can :read, [ Project, Task, Assignment ]
-      can :manage, [ WorkLog ]
+      can :read, [ Project, Task, Assignment, User ]
+      can :manage, WorkLog 
       # manage products, assets he owns
       can :update , Task do | work_part |
-        work_part.users.include? user
+        work_part.open? and work_part.users.include? user
       end
       # can :manage , Asset do | asset |
       #   asset. assetable try ( :owner ) == user
