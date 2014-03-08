@@ -2,10 +2,7 @@
   .col-xs-6.no-float.center-block
     = form_for(@project, :url => @url, :html => { :class => "form-horizontal"}) do |f|
       - if @project.errors.any?
-        #error_explanation
-          h2
-            = pluralize(@project.errors.count, "error")
-            |  prohibited this project from being saved:
+        .alert.alert-danger
           ul
             - @project.errors.full_messages.each do |msg|
               li

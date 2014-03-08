@@ -1,6 +1,5 @@
-class Employees::EmployeesController < ApplicationController
+class Employees::EmployeesController < AuthenticatedController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
   def index
     authorize! :read, User
     @users = User.all

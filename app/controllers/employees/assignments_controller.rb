@@ -1,5 +1,4 @@
-class Employees::AssignmentsController < ApplicationController
-  before_action :authenticate_user!
+class Employees::AssignmentsController < AuthenticatedController
   before_filter :find_user
   def index
     @assignments = @user.assignments.includes(:task)

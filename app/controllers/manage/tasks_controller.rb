@@ -1,4 +1,4 @@
-class Manage::TasksController < Manage::ApplicationController
+class Manage::TasksController < AuthenticatedController
 
   before_filter :find_project
   before_action :set_task, only: [:show, :edit, :update, :destroy, :open, :close]
@@ -43,7 +43,7 @@ class Manage::TasksController < Manage::ApplicationController
     respond_to do |format|
       if @task.update_attributes(open: true)
         format.html { redirect_to project_tasks_path(@project), notice: 'Task was successfully opened.' }
-        format.json { render action: 'show', status: :created, location: project_tasks_url(@project) }
+        format.json { render action: 'index', status: :created, location: project_tasks_url(@project) }
       else
         format.html { redirect_to project_tasks_path(@project), notice: 'Task could not be opened.' }
         format.json { render json: @task.errors, status: :unprocessable_entity }
@@ -56,7 +56,7 @@ class Manage::TasksController < Manage::ApplicationController
     respond_to do |format|
       if @task.update_attributes(open: false)
         format.html { redirect_to project_tasks_path(@project), notice: 'Task was successfully closed.' }
-        format.json { render action: 'show', status: :created, location: project_tasks_url(@project) }
+        format.json { render action: 'index', status: :created, location: project_tasks_url(@project) }
       else
         format.html { redirect_to project_tasks_path(@project), notice: 'Task could not be closed.' }
         format.json { render json: @task.errors, status: :unprocessable_entity }
@@ -77,6 +77,7 @@ class Manage::TasksController < Manage::ApplicationController
         format.html { redirect_to project_task_path(@project,@task), notice: 'Task was successfully created.' }
         format.json { render action: 'show', status: :created, location: project_task_url(@project,@task) }
       else
+        @url = project_tasks_path(@project)
         format.html { render action: 'new' }
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
@@ -93,6 +94,7 @@ class Manage::TasksController < Manage::ApplicationController
         format.html { redirect_to project_task_path(@project,@task), notice: 'Task was successfully updated.' }
         format.json { head :no_content }
       else
+        @url = project_task_path(@project,@task)
         format.html { render action: 'edit' }
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end

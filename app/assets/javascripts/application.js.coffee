@@ -17,3 +17,9 @@
 #= require bootstrap-datetimepicker
 #= require turbolinks
 #= require_tree .
+
+ready = ->
+  $('.date').datetimepicker
+    pickTime: false
+$(document).ready ready
+$(document).on 'page:load', ready

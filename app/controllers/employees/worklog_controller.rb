@@ -1,5 +1,4 @@
-class Employees::WorklogController < ApplicationController
-  before_action :authenticate_user!
+class Employees::WorklogController < AuthenticatedController
   before_filter :find_user
   before_action :set_work_log, only: [:show, :edit, :update, :destroy]
   def index

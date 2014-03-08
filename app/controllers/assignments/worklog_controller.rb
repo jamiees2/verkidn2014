@@ -1,5 +1,4 @@
-class Assignments::WorklogController < ApplicationController
-  before_action :authenticate_user!
+class Assignments::WorklogController < AuthenticatedController
   before_filter :find_assignment
   before_action :set_work_log, only: [:show, :edit, :update, :destroy]
   def index
@@ -18,7 +17,7 @@ class Assignments::WorklogController < ApplicationController
   def new
     authorize! :create, WorkLog
     @url = assignment_worklog_index_path(@assignment)
-    @work_log = WorkLog.new
+    @work_log = WorkLog.new(date: Date.today, hours: 0)
   end
 
   # GET /works/1/edit
@@ -35,7 +34,7 @@ class Assignments::WorklogController < ApplicationController
     @work_log.assignment = @assignment
     respond_to do |format|
       if @work_log.save
-        format.html { redirect_to assignment_worklog_index_path(@assignment), notice: 'Work was successfully created.' }
+        format.html { redirect_to assignment_worklog_index_path(@assignment), notice: 'Work was successfully logged.' }
         format.json { render action: 'show', status: :created, location: assignment_worklog_index_url(@assignment) }
       else
         @url = assignment_worklog_index_path(@assignment)
@@ -52,7 +51,7 @@ class Assignments::WorklogController < ApplicationController
     authorize! :update, WorkLog
     respond_to do |format|
       if @work_log.update(work_log_params)
-        format.html { redirect_to assignment_worklog_index_path(@assignment), notice: 'Work was successfully updated.' }
+        format.html { redirect_to assignment_worklog_index_path(@assignment), notice: 'Work log was successfully updated.' }
         format.json { head :no_content }
       else
         @url = assignment_worklog_path(@assignment,@work_log)

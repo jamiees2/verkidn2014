@@ -1,4 +1,4 @@
-class Manage::AssignmentsController < Manage::ApplicationController
+class Manage::AssignmentsController < AuthenticatedController
 
   before_filter :find_project
   before_action :set_assignment, only: [:show, :edit, :update, :destroy]

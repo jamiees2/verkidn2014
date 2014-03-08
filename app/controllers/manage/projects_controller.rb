@@ -1,6 +1,5 @@
-class Manage::ProjectsController < Manage::ApplicationController
+class Manage::ProjectsController < AuthenticatedController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
 
   # GET /works
   # GET /works.json
@@ -40,6 +39,7 @@ class Manage::ProjectsController < Manage::ApplicationController
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
         format.json { render action: 'show', status: :created, location: @project }
       else
+        @url = projects_path
         format.html { render action: 'new' }
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end
@@ -56,6 +56,7 @@ class Manage::ProjectsController < Manage::ApplicationController
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
         format.json { head :no_content }
       else
+        @url = project_path(@project)
         format.html { render action: 'edit' }
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end

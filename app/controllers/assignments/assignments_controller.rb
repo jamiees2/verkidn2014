@@ -1,5 +1,4 @@
-class Assignments::AssignmentsController < ApplicationController
-  before_action :authenticate_user!
+class Assignments::AssignmentsController < AuthenticatedController
   def index
     @assignments = current_user.assignments.joins(:task).where("tasks.open" => true)
   end
