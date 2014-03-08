@@ -1,11 +1,13 @@
-p
-  strong
-    | Name:
-  = @task.name
-p
-  strong
-    | Description:
-  = @task.description
-= link_to 'Edit', edit_project_task_path(@project,@task)
-|  |
-= link_to 'Back', project_tasks_path(@project)
+.row
+  .col-xs-6.no-float.center-block
+    p
+      strong
+        | Name:
+      = @task.name
+    p
+      strong
+        | Description:
+      = @task.description
+    = link_to 'Edit', edit_project_task_path(@project,@task)
+    |  |
+    = link_to 'Back', project_tasks_path(@project)

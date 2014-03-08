@@ -3,7 +3,7 @@
     = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "form-horizontal"}) do |f|
 
       h2
-        | SIGN IN PLZ
+        | Log In
       = f.email_field :email, :autofocus => true, :class => 'form-control'
       = f.password_field :password, :class => 'form-control'
       - if devise_mapping.rememberable?
@@ -11,4 +11,4 @@
           = f.check_box :remember_me
           | Remember Me
       = f.submit "Sign in", :class => "btn btn-lg btn-primary btn-block"
-    = render "devise/shared/links"
+    / = render "devise/shared/links"

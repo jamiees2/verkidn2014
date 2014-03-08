@@ -45,6 +45,7 @@ Verkidn2014::Application.routes.draw do
         post :open, on: :member
       end
     end
+    get "projects/status/:status_id", action: :status, controller: :projects, as: :status_projects
   end
   
   resources :employees, module: "employees" do

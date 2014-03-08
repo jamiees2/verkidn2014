@@ -1,11 +1,13 @@
-p
-  strong
-    | Name:
-  = @assignment.user.name
-p
-  strong
-    | Email:
-  = @assignment.user.email
-= link_to 'Edit', edit_project_task_assignment_path(@project,@task,@assignment)
-|  |
-= link_to 'Back', project_task_assignments_path(@project,@task)
+.row
+  .col-xs-6.no-float.center-block
+    p
+      strong
+        | Name:
+      = @assignment.user.name
+    p
+      strong
+        | Email:
+      = @assignment.user.email
+    = link_to 'Edit', edit_project_task_assignment_path(@project,@task,@assignment)
+    |  |
+    = link_to 'Back', project_task_assignments_path(@project,@task)

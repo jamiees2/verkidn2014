@@ -7,6 +7,12 @@ class Manage::ProjectsController < AuthenticatedController
     authorize! :read, Project
     @projects = Project.includes(:status)
   end
+  
+  def status
+    authorize! :read, Project
+    @projects = Project.includes(:status).where(status_id: params[:status_id])
+    render action: :index
+  end
 
   # GET /works/1
   # GET /works/1.json
@@ -69,7 +75,7 @@ class Manage::ProjectsController < AuthenticatedController
     authorize! :destroy, Project
     @project.destroy
     respond_to do |format|
-      format.html { redirect_to works_url }
+      format.html { redirect_to projects_url }
       format.json { head :no_content }
     end
   end
