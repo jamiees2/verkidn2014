@@ -31,6 +31,7 @@ class Employees::EmployeesController < ApplicationController
         format.html { redirect_to employees_path, notice: 'Employee was successfully created.' }
         format.json { render action: 'index', status: :created, location: employees_url }
       else
+        @url = employees_path
         format.html { render action: 'new' }
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end
@@ -42,11 +43,18 @@ class Employees::EmployeesController < ApplicationController
   def update
 
     authorize! :update, @user
+    e_params = employee_params
+    if e_params[:password] == ""
+      e_params.delete(:password)
+      e_params.delete(:password_confirmation)
+    end
     respond_to do |format|
-      if @user.update(employee_params)
-        format.html { redirect_to @project, notice: 'Employee was successfully updated.' }
+      
+      if @user.update(e_params)
+        format.html { redirect_to employees_path, notice: 'Employee was successfully updated.' }
         format.json { head :no_content }
       else
+        @url = employee_path(@user)
         format.html { render action: 'edit' }
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end

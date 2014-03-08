@@ -2,10 +2,7 @@
   .col-xs-6.no-float.center-block
     = form_for(@user, :url => @url, :html => { :class => "form-horizontal"}) do |f|
       - if @user.errors.any?
-        #error_explanation
-          h2
-            = pluralize(@user.errors.count, "error")
-            |  prohibited this work from being saved:
+        .alert.alert-danger
           ul
             - @user.errors.full_messages.each do |msg|
               li
@@ -13,7 +10,7 @@
       .field
         = f.label :email
         br
-        = f.text_field :email, :class => "form-control"
+        = f.email_field :email, :autofocus => true, :class => "form-control"
       .field
         = f.label :name
         br

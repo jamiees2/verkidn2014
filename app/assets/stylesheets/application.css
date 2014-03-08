@@ -23,3 +23,10 @@
 .no-float {
   float: none;
 }
+.field_with_errors {
+  display: inline-block;
+  width: 100%;
+}
+.field_with_errors input {
+  border: 1px solid red;
+}

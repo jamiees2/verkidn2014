@@ -34,7 +34,7 @@
       
                     .modal-footer
                       -if can? :destroy, user
-                        = link_to 'Unassign', employee_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger pull-left"
+                        = link_to 'Delete', employee_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger pull-left"
                       -if can? :update, user
                         = link_to 'Edit', edit_employee_path(user), class: "btn btn-info"
                       button.btn.btn-default data-dismiss="modal" type="button" Close
