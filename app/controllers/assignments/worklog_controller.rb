@@ -38,6 +38,7 @@ class Assignments::WorklogController < ApplicationController
         format.html { redirect_to assignment_worklog_index_path(@assignment), notice: 'Work was successfully created.' }
         format.json { render action: 'show', status: :created, location: assignment_worklog_index_url(@assignment) }
       else
+        @url = assignment_worklog_index_path(@assignment)
         format.html { render action: 'new' }
         format.json { render json: @work_log.errors, status: :unprocessable_entity }
       end
@@ -51,9 +52,10 @@ class Assignments::WorklogController < ApplicationController
     authorize! :update, WorkLog
     respond_to do |format|
       if @work_log.update(work_log_params)
-        format.html { redirect_to @work_log, notice: 'Work was successfully updated.' }
+        format.html { redirect_to assignment_worklog_index_path(@assignment), notice: 'Work was successfully updated.' }
         format.json { head :no_content }
       else
+        @url = assignment_worklog_path(@assignment,@work_log)
         format.html { render action: 'edit' }
         format.json { render json: @work_log.errors, status: :unprocessable_entity }
       end
@@ -80,6 +82,6 @@ class Assignments::WorklogController < ApplicationController
     end
 
     def work_log_params
-      params.require(:work_log).permit(:hours,:description)
+      params.require(:work_log).permit(:hours,:description,:date)
     end
 end

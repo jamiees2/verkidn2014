@@ -13,7 +13,7 @@
  *= require_self
  *= require_tree .
  */
-
+@import 'bootstrap-datetimepicker';
 #footer {
   color: #999;
   background-color: #f8f8f8;
@@ -29,4 +29,13 @@
 }
 .field_with_errors input {
   border: 1px solid red;
+}
+
+
+.field {
+  margin-top: 10px;
+}
+
+.btn.btn-lg {
+  margin-top: 10px;
 }

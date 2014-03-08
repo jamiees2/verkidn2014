@@ -21,13 +21,13 @@
             td
               = work_log.description
             td
-              = work_log.created_at
+              = work_log.date
             td
               -if can? :update, work_log
-                = link_to 'Edit', edit_assignment_worklog_path(@assignment, work_log)
+                = link_to 'Change', edit_assignment_worklog_path(@assignment, work_log)
             td
               -if can? :destroy, work_log
-                = link_to 'Destroy', assignment_worklog_path(@assignment, work_log), method: :delete, data: { confirm: 'Are you sure?' }
+                = link_to 'Delete', assignment_worklog_path(@assignment, work_log), method: :delete, data: { confirm: 'Are you sure?' }
 
     p
       | Total number of hours:&nbsp;

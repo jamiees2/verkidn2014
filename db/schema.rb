@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140307132545) do
+ActiveRecord::Schema.define(version: 20140308105030) do
 
   create_table "assignments", force: true do |t|
     t.integer  "user_id"
@@ -84,8 +84,10 @@ ActiveRecord::Schema.define(version: 20140307132545) do
     t.integer  "assignment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "date"
   end
 
+  add_index "work_logs", ["assignment_id", "date"], name: "index_work_logs_on_assignment_id_and_date", unique: true
   add_index "work_logs", ["assignment_id"], name: "index_work_logs_on_assignment_id"
 
 end
