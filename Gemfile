@@ -30,8 +30,6 @@ gem 'bootstrap3-datetimepicker-rails', '~> 2.1.30'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
-gem "paperclip", "~> 4.1"
-
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
